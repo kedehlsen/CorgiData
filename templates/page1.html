@@ -2,18 +2,19 @@
 
 {% set active_page = "page1"%}
 
-{% block title %}Celsius to Fahrenheit{% endblock %}
+{% block title %}{% endblock %}
   
 {% block content %}
 
 
-  <h1>Celsius to Fahrenheit Conversion</h1>
+  <h1></h1>
 
-  <form action='/response'>
-    Type a number<br>
-       <input type="number" name="Celsius">
-       <br><br>
-       <input type="submit">
-  </form>
+  <form action="/fact">
+      <select name= "state">
+        {{ options }}
+      </select>
+      <br><br>
+      <input type="submit">
+    </form>
 
 {% endblock %}
