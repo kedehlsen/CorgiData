@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% set active_page = "page1"%}
+
+{% block title %}Celsius to Fahrenheit{% endblock %}
+  
+{% block content %}
+
+
+  <h1>Celsius to Fahrenheit Conversion</h1>
+
+  <form action='/response'>
+    Type a number<br>
+       <input type="number" name="Celsius">
+       <br><br>
+       <input type="submit">
+  </form>
+
+{% endblock %}
