@@ -32,6 +32,14 @@ def get_county_options(counties):
         options = options + Markup("<option value=\"" + county + "\">" + county + "</option>")
     return options
 
+def get_interesting_fact(county,counties):
+    republican={}
+    democraft={}
+    returnVal= ""
+    for data in counties:
+        if data['Vote Data']
+    return returnVal
+
 
 
 if __name__=="__main__":
