@@ -5,10 +5,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def render_main():
-    with open('election.json') as demographics_data:
+    with open('election.json') as election:
         counties = json.load(election)
     return render_template('home.html', options=get_state_options(counties))
-
+        
+        
 @app.route("/p1") #annotations tell which function goes with which request
 def render_page1():
     return render_template('page1.html')
