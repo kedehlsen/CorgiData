@@ -4,6 +4,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def render_main():
+    with open('county_demographics.json') as demographics_data:
+        counties = json.load(elections)
     return render_template('home.html')
 
 @app.route("/p1") #annotations tell which function goes with which request
@@ -17,6 +19,16 @@ def render_page2():
 @app.route("/p3")
 def render_page3():
     return render_template('page3.html')
+
+def get_county_options(counties):
+    listOfCounties = []
+    options = ""
+    for data in counties:
+        if data['Location']['County'] not in listOfCounties:
+            listOfCounties.append(data['Location']['County'])
+    for county in listOfCounties:
+        options = options + Markup("<option value=\"" + county + "\">" + county + "</option>")
+    return options
 
 
 
