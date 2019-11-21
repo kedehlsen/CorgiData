@@ -6,7 +6,7 @@ app = Flask(__name__)
 def render_main():
     with open('county_demographics.json') as demographics_data:
         counties = json.load(elections)
-    return render_template('home.html')
+    return render_template('home.html', options=get_state_options(counties))
 
 @app.route("/p1") #annotations tell which function goes with which request
 def render_page1():
