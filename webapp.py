@@ -34,10 +34,15 @@ def get_county_options(counties):
 
 def get_interesting_fact(county,counties):
     republican={}
-    democraft={}
+    democrat={}
     returnVal= ""
     for data in counties:
-        if data['Vote Data']
+        for person in data['Vote Data']:
+            if data['Vote Data'][person]['Party'] == "Republican":
+                republican[person] = data['Vote Data'][person]['Number of Votes']
+            elif data['Vote Data'][person]['Party'] == "Democrat":
+                democrat[person] = data['Vote Data'][person]['Number of Votes']
+    if 
     return returnVal
 
 
