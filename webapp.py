@@ -35,14 +35,27 @@ def get_county_options(counties):
 def get_interesting_fact(county,counties):
     republican={}
     democrat={}
+    returnRep = ""
+    returnDem = ""
     returnVal= ""
-    for data in counties:
-        for person in data['Vote Data']:
-            if data['Vote Data'][person]['Party'] == "Republican":
-                republican[person] = data['Vote Data'][person]['Number of Votes']
-            elif data['Vote Data'][person]['Party'] == "Democrat":
-                democrat[person] = data['Vote Data'][person]['Number of Votes']
-    if 
+    
+    for person in counties[county]['Vote Data']:
+        if counties[county]['Vote Data'][person]['Party'] == "Republican":
+            republican[person] = counties[county]['Vote Data'][person]['Number of Votes']
+        elif counties[county]['Vote Data'][person]['Party'] == "Democrat":
+            democrat[person] = counties[county]['Vote Data'][person]['Number of Votes']
+    highRep = ["Ben Carson",republican['Ben Carson']]
+    highDem = ["Bernie Sanders", democrat['Bernie Sanders']]
+    for people in republican:
+        if republican[people] > highRep[1]
+            highRep[1] = republican[people]
+            highRep[0] = people
+    for people in democrat:
+        if democrat[people] > highDem[1]
+            highDem[1] = democrat[people]
+            highDem[0] = people
+            
+    returnDem = democrat[0] + " has the most votes in " + county + " with " + democrat[1] + " votes."
     return returnVal
 
 
