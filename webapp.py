@@ -46,7 +46,7 @@ def get_popular_dem(county,counties):
     countyData = {}
     
     for c in counties:
-        if c["Location"]["County"] = county:
+        if c["Location"]["County"] == county:
             countyData = c
     
     for person in countyData["Vote Data"]:
@@ -69,7 +69,7 @@ def get_popular_rep(county,counties):
     countyData = {}
     
     for c in counties:
-        if c["Location"]["County"] = county:
+        if c["Location"]["County"] == county:
             countyData = c
     
     for person in countyData["Vote Data"]:
