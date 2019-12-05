@@ -41,13 +41,14 @@ def get_county_options(counties):
 
 def get_popular_dem(county,counties):
     democrat={}
-    returnDemName = "Bernie Sanders"
-    returnDemNum = democrat['Bernie Sanders']
-    returnDem =""
+    
     
     for person in counties[county]['Vote Data']:
         if counties[county]['Vote Data'][person]['Party'] == "Democrat":
             democrat[person] = counties[county]['Vote Data'][person]['Number of Votes']
+    returnDemName = "Bernie Sanders"
+    returnDemNum = democrat['Bernie Sanders']
+    returnDem =""
     for people in democrat:
         if democrat[people] > returnDemNum:
             returnDemNum = democrat[people]
@@ -58,13 +59,14 @@ def get_popular_dem(county,counties):
 
 def get_popular_rep(county,counties):
     republican={}
-    returnRepName = "Ben Carson"
-    returnRepNum = republican["Ben Carson"]
-    returnRep = ""
+    
     
     for person in counties[county]['Vote Data']:
         if counties[county]['Vote Data'][person]['Party'] == "Republican":
             republican[ person] = counties[county]['Vote Data'][person]['Number of Votes']
+    returnRepName = "Ben Carson"
+    returnRepNum = republican["Ben Carson"]
+    returnRep = ""
     for people in republican:
         if republican[people] > returnRepNum:
            returnRepNum = democrat[people]
