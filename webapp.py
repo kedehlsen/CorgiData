@@ -63,6 +63,8 @@ def get_interesting_fact(county,counties):
             highDem[0] = people
             
     returnDem = democrat[0] + " has the most votes in " + county + " with " + democrat[1] + " votes."
+    returnRep = republican[0] + " has the most votes in " + county + " with " + republican[1] + " votes."
+    returnVal= returnDem + " " + returnRep
     return returnVal
 
 
