@@ -43,7 +43,7 @@ def get_popular_dem(county,counties):
     democrat={}
     returnDemName = "Bernie Sanders"
     returnDemNum = democrat['Bernie Sanders']
-    returnDem =v""
+    returnDem =""
     
     for person in counties[county]['Vote Data']:
         if counties[county]['Vote Data'][person]['Party'] == "Democrat":
