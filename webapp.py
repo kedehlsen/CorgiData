@@ -41,33 +41,35 @@ def get_county_options(counties):
 
 def get_popular_dem(county,counties):
     democrat={}
-    returnDem = ""
+    returnDemName = "Bernie Sanders"
+    returnDemNum = democrat['Bernie Sanders']
+    returnDem =v""
     
     for person in counties[county]['Vote Data']:
         if counties[county]['Vote Data'][person]['Party'] == "Democrat":
             democrat[person] = counties[county]['Vote Data'][person]['Number of Votes']
-    highDem = ["Bernie Sanders", democrat['Bernie Sanders']]
     for people in democrat:
-        if democrat[people] > highDem[1]:
-            highDem[1] = democrat[people]
-            highDem[0] = people
+        if democrat[people] > returnDemNum:
+            returnDemNum = democrat[people]
+            returnDemName = people
             
-    returnDem = democrat[0] + " has the most votes in " + county + " with " + democrat[1] + " votes."
+    returnDem = returnDemName + " has the most votes in " + county + " with " + returnDemNum + " votes."
     return returnDem
 
 def get_popular_rep(county,counties):
     republican={}
+    returnRepName = "Ben Carson"
+    returnRepNum = republican["Ben Carson"]
     returnRep = ""
     
     for person in counties[county]['Vote Data']:
         if counties[county]['Vote Data'][person]['Party'] == "Republican":
-            republican[person] = counties[county]['Vote Data'][person]['Number of Votes']
-    highRep = ["Ben Carson",republican['Ben Carson']]
+            republican[ person] = counties[county]['Vote Data'][person]['Number of Votes']
     for people in republican:
-        if republican[people] > highRep[1]:
-            highRep[1] = republican[people]
-            highRep[0] = people
-    returnRep = republican[0] + " has the most votes in " + county + " with " + republican[1] + " votes."
+        if republican[people] > returnRepNum:
+           returnRepNum = democrat[people]
+           returnRepName = people
+    returnRep = returnRepName + " has the most votes in " + county + " with " + returnRepNum + " votes."
     return returnRep
 
 
