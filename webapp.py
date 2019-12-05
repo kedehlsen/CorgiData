@@ -47,11 +47,11 @@ def get_interesting_fact(county,counties):
     highRep = ["Ben Carson",republican['Ben Carson']]
     highDem = ["Bernie Sanders", democrat['Bernie Sanders']]
     for people in republican:
-        if republican[people] > highRep[1]
+        if republican[people] > highRep[1]:
             highRep[1] = republican[people]
             highRep[0] = people
     for people in democrat:
-        if democrat[people] > highDem[1]
+        if democrat[people] > highDem[1]:
             highDem[1] = democrat[people]
             highDem[0] = people
             
