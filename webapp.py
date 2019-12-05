@@ -18,7 +18,7 @@ def render_page1():
 def getfact1():
     with open('election.json') as election:
         counties = json.load(election)
-    counties = request.args[]
+    county = request.args["county"]
     return render_template("page1.html",  options=get_county_options(counties), info = get_interesting_fact(county, counties))
         
 @app.route("/p2")
