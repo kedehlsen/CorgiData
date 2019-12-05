@@ -41,7 +41,7 @@ def get_county_options(counties):
 
 def get_popular_dem(county,counties):
     democrat={}
-    
+    print(county)
     
     for person in counties[county]['Vote Data']:
         if counties[county]['Vote Data'][person]['Party'] == "Democrat":
