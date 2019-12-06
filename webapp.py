@@ -50,7 +50,7 @@ def get_popular_dem(county,counties):
             countyData = c
     
     for person in countyData["Vote Data"]:
-        if person['Party'] == "Democrat":
+        if countyData["Vote Data"][person]['Party'] == "Democrat":
             democrat[person] = person['Number of Votes']
     returnDemName = "Bernie Sanders"
     returnDemNum = democrat['Bernie Sanders']
@@ -73,7 +73,7 @@ def get_popular_rep(county,counties):
             countyData = c
     
     for person in countyData["Vote Data"]:
-        if person['Party'] == "Republican":
+        if countyData["Vote Data"][person]['Party'] == "Republican":
             republican[person] = person['Number of Votes']
     returnRepName = "Ben Carson"
     returnRepNum = republican["Ben Carson"]
