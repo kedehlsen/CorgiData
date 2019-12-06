@@ -60,7 +60,7 @@ def get_popular_dem(county,counties):
             returnDemNum = democrat[people]
             returnDemName = people
             
-    returnDem = returnDemName + " has the most votes in " + county + " with " + returnDemNum + " votes."
+    returnDem = returnDemName + " has the most votes in " + county + " with " + str(returnDemNum) + " votes."
     return returnDem
 
 def get_popular_rep(county,counties):
@@ -82,7 +82,7 @@ def get_popular_rep(county,counties):
         if republican[people] > returnRepNum:
            returnRepNum = democrat[people]
            returnRepName = people
-    returnRep = returnRepName + " has the most votes in " + county + " with " + returnRepNum + " votes."
+    returnRep = returnRepName + " has the most votes in " + county + " with " + str(returnRepNum) + " votes."
     return returnRep
 
 
