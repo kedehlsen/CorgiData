@@ -80,7 +80,7 @@ def get_popular_rep(county,counties):
     returnRep = ""
     for people in republican:
         if republican[people] > returnRepNum:
-           returnRepNum = democrat[people]
+           returnRepNum = republican[people]
            returnRepName = people
     returnRep = returnRepName + " has the most votes in " + county + " with " + str(returnRepNum) + " votes."
     return returnRep
