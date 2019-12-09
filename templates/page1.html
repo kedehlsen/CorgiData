@@ -8,7 +8,13 @@
 
 
   <h1></h1>
-
+  <form action="/get_state">
+      <select name= "state">
+        {{ options }}
+      </select>
+      <br><br>
+      <input type="submit">
+    </form>
   <form action="/getfact1">
       <select name= "county">
         {{ options }}
