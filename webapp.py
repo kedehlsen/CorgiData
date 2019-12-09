@@ -20,7 +20,7 @@ def get_state():
         counties = json.load(election)
     state = request.args["state"]
 
-    return render_template("page1.html",  options=get_county_options(counties))
+    return render_template("page1.html",  stateoptions=get_state_options(counties), options=get_county_options(counties))
 
 @app.route("/getfact1")
 def getfact1():
@@ -28,7 +28,7 @@ def getfact1():
         counties = json.load(election)
     county = request.args["county"]
 
-    return render_template("page1.html",  options=get_county_options(counties), dem_info = get_popular_dem(county, counties), rep_info = get_popular_rep(county, counties))
+    return render_template("page1.html", stateoptions=get_state_options(counties), options=get_county_options(counties), dem_info = get_popular_dem(county, counties), rep_info = get_popular_rep(county, counties))
         
 @app.route("/p2")
 def render_page2():
