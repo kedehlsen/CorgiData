@@ -26,9 +26,10 @@ def get_state():
 def getfact1():
     with open('election.json') as election:
         counties = json.load(election)
+    state = request.args["state"]
     county = request.args["county"]
 
-    return render_template("page1.html", stateoptions=get_state_options(counties), options=get_county_options(counties), dem_info = get_popular_dem(county, counties), rep_info = get_popular_rep(county, counties))
+    return render_template("page1.html", stateoptions=get_state_options(counties), options=get_county_options(state, counties), dem_info = get_popular_dem(county, counties), rep_info = get_popular_rep(county, counties))
         
 @app.route("/p2")
 def render_page2():
@@ -38,11 +39,12 @@ def render_page2():
 def render_page3():
     return render_template('page3.html')
 
-def get_county_options(counties):
+def get_county_options(state, counties):
     listOfCounties = []
     options = ""
     for data in counties:
         if data['Location']['County'] not in listOfCounties:
+            #write if for if in state
             listOfCounties.append(data['Location']['County'])
     for county in listOfCounties:
         options = options + Markup("<option value=\"" + county + "\">" + county + "</option>")
@@ -53,9 +55,10 @@ def get_state_options(counties):
     options = ""
     for data in counties:
         if data['Location']['State'] not in listOfStates:
-            listOfStates.append(data['Location']['State'])
-    for county in listOfStates:
-        options = options + Markup("<option value=\"" + county + "\">" + county + "</option>")
+            listOfStates.append(data['Location']['State']) 
+   #maybe try to alphabetize
+    for state in listOfStates:
+        options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
     return options
 
 def get_popular_dem(county,counties):
@@ -104,13 +107,13 @@ def get_popular_rep(county,counties):
     return returnRep
 
 def get_counties_in_state(state,counties):
-    state = {}
+    counties_of_state = {}
     
     for s in counties:
         if s['Location']['State'] == state:
-            state = s
+            counties_of_state = s
             
-    return state
+    return counties_of_state
 
 
 if __name__=="__main__":
