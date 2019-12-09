@@ -12,7 +12,15 @@ def render_main():
 def render_page1():
     with open('election.json') as election:
         counties = json.load(election)
-    return render_template('page1.html', options=get_county_options(counties))
+    return render_template('page1.html', stateoptions=get_state_options(counties),options=get_county_options(counties))
+
+@app.route("/get_state")
+def get_state():
+    with open('election.json') as election:
+        counties = json.load(election)
+    state = request.args["state"]
+
+    return render_template("page1.html",  options=get_county_options(counties))
 
 @app.route("/getfact1")
 def getfact1():
@@ -37,6 +45,16 @@ def get_county_options(counties):
         if data['Location']['County'] not in listOfCounties:
             listOfCounties.append(data['Location']['County'])
     for county in listOfCounties:
+        options = options + Markup("<option value=\"" + county + "\">" + county + "</option>")
+    return options
+
+def get_state_options(counties):
+    listOfStates = []
+    options = ""
+    for data in counties:
+        if data['Location']['State'] not in listOfCounties:
+            listOfStates.append(data['Location']['State'])
+    for county in listOfStates:
         options = options + Markup("<option value=\"" + county + "\">" + county + "</option>")
     return options
 
@@ -85,6 +103,14 @@ def get_popular_rep(county,counties):
     returnRep = returnRepName + " has the most votes in " + county + " with " + str(returnRepNum) + " votes."
     return returnRep
 
+def get_counties_in_state(state,counties):
+    state = {}
+    
+    for s in counties:
+        if s['Location']['State'] == state:
+            state = s
+            
+    return state
 
 
 if __name__=="__main__":
