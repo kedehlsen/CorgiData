@@ -107,14 +107,6 @@ def get_popular_rep(county,counties):
     returnRep = returnRepName + " has the most votes in " + county + " with " + str(returnRepNum) + " votes."
     return returnRep
 
-def get_counties_in_state(state,counties):
-    counties_of_state = {}
-    
-    for s in counties:
-        if s['Location']['State'] == state:
-            counties_of_state = s
-            
-    return counties_of_state
 
 
 if __name__=="__main__":
