@@ -99,8 +99,9 @@ def get_popular_rep(state,county,counties):
     countyData = {}
     
     for c in counties:
-        if c["Location"]["County"] == county:
-            countyData = c
+        if c["Location"]["State"] == county:
+            if c["Location"]["County"] == state:
+                countyData = c
     
     for person in countyData["Vote Data"]:
         if countyData["Vote Data"][person]['Party'] == "Republican":
