@@ -44,8 +44,8 @@ def get_county_options(state, counties):
     options = ""
     for data in counties:
         if data['Location']['County'] not in listOfCounties:
-            #write if for if in state
-            listOfCounties.append(data['Location']['County'])
+            if data['Location']['State'] == state:
+                listOfCounties.append(data['Location']['County'])
     for county in listOfCounties:
         options = options + Markup("<option value=\"" + county + "\">" + county + "</option>")
     return options
