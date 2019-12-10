@@ -17,7 +17,7 @@ def render_page1():
         render = render_template('page1.html', stateoptions=get_state_options(counties),options=get_county_options(state,counties))
     else:
         render = render_template('page1.html', stateoptions=get_state_options(counties))
-return render
+    return render
 
 @app.route("/get_state")
 def get_state():
