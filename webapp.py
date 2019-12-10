@@ -34,7 +34,7 @@ def getfact1():
     county = request.args["county"]
     if "state" in request.args:
         state = request.args["state"]
-        render= render_template("page1.html", stateoptions=get_state_options(counties), options=get_county_options(state, counties), dem_info = get_popular_dem(county, counties), rep_info = get_popular_rep(county, counties))
+        render= render_template("page1.html", stateoptions=get_state_options(counties), options=get_county_options(state, counties), dem_info = get_popular_dem(state, county, counties), rep_info = get_popular_rep(state, county, counties))
     else:
         render= render = render_template('page1.html', stateoptions=get_state_options(counties))
     return render
@@ -69,14 +69,15 @@ def get_state_options(counties):
         options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
     return options
 
-def get_popular_dem(county,counties):
+def get_popular_dem(state,county,counties):
     democrat={}
     
     countyData = {}
     
     for c in counties:
-        if c["Location"]["County"] == county:
-            countyData = c
+        if c["Location"]["State"] == county:
+            if c["Location"]["County"] == state:
+                countyData = c
     
     for person in countyData["Vote Data"]:
         if countyData["Vote Data"][person]['Party'] == "Democrat":
@@ -92,7 +93,7 @@ def get_popular_dem(county,counties):
     returnDem = returnDemName + " has the most votes in " + county + " with " + str(returnDemNum) + " votes."
     return returnDem
 
-def get_popular_rep(county,counties):
+def get_popular_rep(state,county,counties):
     republican={}
     
     countyData = {}
