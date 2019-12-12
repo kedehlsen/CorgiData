@@ -14,9 +14,9 @@ def render_page1():
         counties = json.load(election)
     if "state" in request.args:
         state = request.args["state"]
-        render = render_template('page1.html', stateoptions=get_state_options(counties),options=get_county_options(state,counties))
+        render = render_template('page1.html', stateoptions=get_state_options(counties,""),options=get_county_options(state,counties))
     else:
-        render = render_template('page1.html', stateoptions=get_state_options(counties))
+        render = render_template('page1.html', stateoptions=get_state_options(counties,""))
     return render
 
 
