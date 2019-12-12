@@ -31,11 +31,11 @@ def getfact1():
         state = request.args["state"]
         if "county" in request.args:
             county = request.args["county"]
-            render= render_template("page1.html", stateoptions=get_state_options(counties), options=get_county_options(state, counties), dem_info = get_popular_dem(state, county, counties), rep_info = get_popular_rep(state, county, counties))
+            render= render_template("page1.html", stateoptions=get_state_options(counties,state), options=get_county_options(state, counties), dem_info = get_popular_dem(state, county, counties), rep_info = get_popular_rep(state, county, counties))
         else:
-            render = render_template('page1.html', stateoptions=get_state_options(counties),options=get_county_options(state,counties))
+            render = render_template('page1.html', stateoptions=get_state_options(counties,state),options=get_county_options(state,counties))
     else:
-        render = render_template('page1.html', stateoptions=get_state_options(counties))
+        render = render_template('page1.html', stateoptions=get_state_options(counties,""))
     return render
         
 @app.route("/p2")
@@ -57,7 +57,7 @@ def get_county_options(state, counties):
         options = options + Markup("<option value=\"" + county + "\">" + county + "</option>")
     return options
 
-def get_state_options(counties):
+def get_state_options(counties,state):
     listOfStates = []
     options = ""
     for data in counties:
@@ -65,7 +65,10 @@ def get_state_options(counties):
             listOfStates.append(data['Location']['State']) 
    #maybe try to alphabetize
     for state in listOfStates:
-        options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
+        if state == "":
+            options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
+        else:
+            options = options + Markup("<option value=\"" + state + "\" >" + state + "" selected " + "</option>")
     return options
 
 def get_popular_dem(state,county,counties):
