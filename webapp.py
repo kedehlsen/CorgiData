@@ -31,10 +31,12 @@ def get_state():
 def getfact1():
     with open('election.json') as election:
         counties = json.load(election)
-    county = request.args["county"]
+    
+  
     if "state" in request.args:
+        state = request.args["state"]
         if "county" in request.args:
-            state = request.args["state"]
+            county = request.args["county"]
             render= render_template("page1.html", stateoptions=get_state_options(counties), options=get_county_options(state, counties), dem_info = get_popular_dem(state, county, counties), rep_info = get_popular_rep(state, county, counties))
         else:
             render = render_template('page1.html', stateoptions=get_state_options(counties),options=get_county_options(state,counties))
