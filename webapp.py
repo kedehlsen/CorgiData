@@ -68,7 +68,7 @@ def get_state_options(counties,state):
         if state == "":
             options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
         else:
-            options = options + Markup("<option value=\ selected "" + selected + "\" >" + state + "</option>")
+           options = options + Markup("<option value=\"" + state + " selected" + "\">" + state + "</option>")
     return options
 
 def get_popular_dem(state,county,counties):
