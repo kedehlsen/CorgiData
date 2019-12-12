@@ -33,10 +33,13 @@ def getfact1():
         counties = json.load(election)
     county = request.args["county"]
     if "state" in request.args:
-        state = request.args["state"]
-        render= render_template("page1.html", stateoptions=get_state_options(counties), options=get_county_options(state, counties), dem_info = get_popular_dem(state, county, counties), rep_info = get_popular_rep(state, county, counties))
+        if "county" in request.args:
+            state = request.args["state"]
+            render= render_template("page1.html", stateoptions=get_state_options(counties), options=get_county_options(state, counties), dem_info = get_popular_dem(state, county, counties), rep_info = get_popular_rep(state, county, counties))
+        else:
+            render = render_template('page1.html', stateoptions=get_state_options(counties),options=get_county_options(state,counties))
     else:
-        render= render = render_template('page1.html', stateoptions=get_state_options(counties))
+        render = render_template('page1.html', stateoptions=get_state_options(counties))
     return render
         
 @app.route("/p2")
