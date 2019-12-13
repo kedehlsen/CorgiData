@@ -51,7 +51,7 @@ def get_county_options(state_selected, counties):
     options = ""
     for data in counties:
         if data['Location']['County'] not in listOfCounties:
-            if data['Location']['State'] == state:
+            if data['Location']['State'] == state:_selected
                 listOfCounties.append(data['Location']['County'])
     for county in listOfCounties:
         if (state_selected == "") or not(state == state_selected):
