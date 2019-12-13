@@ -57,7 +57,7 @@ def get_county_options(state, counties):
         options = options + Markup("<option value=\"" + county + "\">" + county + "</option>")
     return options
 
-def get_state_options(counties,state):
+def get_state_options(counties,state_selected):
     listOfStates = []
     options = ""
     for data in counties:
@@ -65,7 +65,7 @@ def get_state_options(counties,state):
             listOfStates.append(data['Location']['State']) 
    #maybe try to alphabetize
     for state in listOfStates:
-        if state == "":
+        if (state_selected == "") or not(state == selected_state):
             options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
         else:
            options = options + Markup("<option value=\"" + state + "\"" + " selected" + ">" + state + "</option>")
