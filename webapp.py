@@ -46,7 +46,7 @@ def render_page2():
 def render_page3():
     return render_template('page3.html')
 
-def get_county_options(state, counties):
+def get_county_options(state_selected, counties):
     listOfCounties = []
     options = ""
     for data in counties:
@@ -54,7 +54,10 @@ def get_county_options(state, counties):
             if data['Location']['State'] == state:
                 listOfCounties.append(data['Location']['County'])
     for county in listOfCounties:
-        options = options + Markup("<option value=\"" + county + "\">" + county + "</option>")
+        if (state_selected == "") or not(state == state_selected):
+            options = options + Markup("<option value=\"" + county + "\">" + county + "</option>")
+        else:
+           options = options + Markup("<option value=\"" + state + "\"" + " selected" + ">" + state + "</option>")
     return options
 
 def get_state_options(counties,state_selected):
