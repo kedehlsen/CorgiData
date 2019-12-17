@@ -31,7 +31,7 @@ def getfact1():
         state = request.args["state"]
         if "county" in request.args:
             county = request.args["county"]
-            print(get_popular_dem(state, county, counties))
+            print(state)
             render= render_template("page1.html", stateoptions=get_state_options(counties,state), options=get_county_options(county, state, counties), dem_info = get_popular_dem(state, county, counties), rep_info = get_popular_rep(state, county, counties))
         else:
             render = render_template('page1.html', stateoptions=get_state_options(counties,state),options=get_county_options("", state,counties))
