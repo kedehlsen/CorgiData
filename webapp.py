@@ -54,6 +54,7 @@ def get_county_options(county_selected, state_selected, counties):
             if data['Location']['State'] == state_selected:
                 listOfCounties.append(data['Location']['County'])
     for county in listOfCounties:
+        print(county_selected)
         if (county_selected == "") or not(county['Location']['County'] == county_selected):
             options = options + Markup("<option value=\"" + county + "\">" + county + "</option>")
         else:
