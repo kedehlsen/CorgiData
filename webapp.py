@@ -85,6 +85,7 @@ def get_popular_dem(state,county,counties):
             if c["Location"]["County"] == state:
                 countyData = c
     print(countyData)
+    #here is what YOU WERE WORKING ON
     
     for person in countyData["Vote Data"]:
         if countyData["Vote Data"][person]['Party'] == "Democrat":
