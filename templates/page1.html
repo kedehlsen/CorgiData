@@ -15,12 +15,12 @@
       <br><br>
       <input type="submit">
     </form>
-  <form action="/getfact1?state=California">
+  <form action="/getfact1">
       <select name= "county">
         {{ options }}
       </select>
       <br><br>
-      <input type="submit">
+      <input type="submit" name ="state" value = {{ state_input }}>
     </form>
       <p>{{dem_info}} <br> {{rep_info}}</p>
 
