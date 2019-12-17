@@ -14,7 +14,7 @@ def render_page1():
         counties = json.load(election)
     if "state" in request.args:
         state = request.args["state"]
-        render = render_template('page1.html', stateoptions=get_state_options(counties,""),options=get_county_options(state,counties))
+        render = render_template('page1.html', stateoptions=get_state_options(counties,""),options=get_county_options("","",counties))
     else:
         render = render_template('page1.html', stateoptions=get_state_options(counties,""))
     return render
@@ -31,9 +31,9 @@ def getfact1():
         state = request.args["state"]
         if "county" in request.args:
             county = request.args["county"]
-            render= render_template("page1.html", stateoptions=get_state_options(counties,state), options=get_county_options(state, counties), dem_info = get_popular_dem(state, county, counties), rep_info = get_popular_rep(state, county, counties))
+            render= render_template("page1.html", stateoptions=get_state_options(counties,state), options=get_county_options(county, state, counties), dem_info = get_popular_dem(state, county, counties), rep_info = get_popular_rep(state, county, counties))
         else:
-            render = render_template('page1.html', stateoptions=get_state_options(counties,state),options=get_county_options(state,counties))
+            render = render_template('page1.html', stateoptions=get_state_options(counties,state),options=get_county_options("", state,counties))
     else:
         render = render_template('page1.html', stateoptions=get_state_options(counties,""))
     return render
@@ -46,7 +46,7 @@ def render_page2():
 def render_page3():
     return render_template('page3.html')
 
-def get_county_options(state_selected, counties):
+def get_county_options(county_selected, state_selected, counties):
     listOfCounties = []
     options = ""
     for data in counties:
@@ -54,10 +54,10 @@ def get_county_options(state_selected, counties):
             if data['Location']['State'] == state_selected:
                 listOfCounties.append(data['Location']['County'])
     for county in listOfCounties:
-        if (state_selected == "") or not(state == state_selected):
+        if (county_selected == "") or not(county['Location']['County'] == county_selected):
             options = options + Markup("<option value=\"" + county + "\">" + county + "</option>")
         else:
-           options = options + Markup("<option value=\"" + state + "\"" + " selected" + ">" + state + "</option>")
+           options = options + Markup("<option value=\"" + county + "\"" + " selected" + ">" + county + "</option>")
     return options
 
 def get_state_options(counties,state_selected):
